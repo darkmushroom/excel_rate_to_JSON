@@ -1,0 +1,42 @@
+# This document maps a postcode area to the postcode it represents.
+# As demonstrated, an entry can be present multiple times. If so, the key
+# (area) is added once and the postcode is appended to the end of that key value
+#
+# example:
+#   ABA, 1000
+#   ABA, 2000
+#
+# ...will turn into
+#   { "ABA", "1000, 2000"}
+
+NARNIA, 00000
+MIDDLE-EARTH, 01954
+MIDDLE-EARTH, 01955
+MIDDLE-EARTH, 01956
+MIDDLE-EARTH, 01957
+MIDDLE-EARTH, 01958
+NARNIA, 01950
+NARNIA, 01951
+NARNIA, 01952
+NARNIA, 01953
+OZ, 99999
+ATLANTIS, 10101
+ATLANTIS, 10104
+ATLANTIS, 10106
+ATLANTIS, 10110
+NEVERLAND, 81398
+ASGARD, 02017
+WESTEROS, 88441
+OZ, 13525
+OZ, 13526
+OZ, 13527
+OZ, 13528
+RIVENDELL, 76571
+WONDERLAND, 66924
+WONDERLAND, 66925
+WONDERLAND, 66926
+WONDERLAND, 66927
+WONDERLAND, 66928
+WAKANDA, 47380 
+ATLANTIS, 90210
+PANDORA, 80218

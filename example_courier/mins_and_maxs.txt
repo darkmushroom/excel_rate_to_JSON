@@ -1,0 +1,6 @@
+# This is a two-line file that represents weight minimum and maximum values.
+# Weights are in kilograms and accurate to two decimal places
+# (i.e. accurate to the decagram)
+
+0, 5, 10, 15, 20, 30, 40, 50, 100
+4.99, 9.99, 14.99, 19.99, 29.99, 39.99, 49.99, 99.99, 999.99

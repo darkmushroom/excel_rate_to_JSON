@@ -1,0 +1,19 @@
+# A comma-separated matrix of price tiers.
+# The X axis represents increasing price with increasing weight
+# Each entry on the Y axis represents a delivery area represented in postcode_areas.txt
+#
+# So, each line must match the number of entries in mins_and_maxs.txt, and
+# the number of lines must match the number of lines in postcode_areas.txt
+
+0.01, 0.02, 0.03, 0.04, 0.05, 0.06, 0.07, 0.08, 0.09
+0.1, 0.11, 0.12, 0.13, 0.14, 0.15, 0.16, 0.17, 0.18
+0.11, 0.13, 0.15, 0.17, 0.19, 0.21, 0.23, 0.25, 0.27
+0.21, 0.24, 0.27, 0.3, 0.33, 0.36, 0.39, 0.42, 0.45
+0.32, 0.37, 0.42, 0.47, 0.52, 0.57, 0.62, 0.67, 0.72
+0.53, 0.61, 0.69, 0.77, 0.85, 0.93, 1.01, 1.09, 1.17
+0.85, 0.98, 1.11, 1.24, 1.37, 1.5, 1.63, 1.76, 1.89
+1.38, 1.59, 1.8, 2.01, 2.22, 2.43, 2.64, 2.85, 3.06
+2.23, 2.57, 2.91, 3.25, 3.59, 3.93, 4.27, 4.61, 4.95
+3.61, 4.16, 4.71, 5.26, 5.81, 6.36, 6.91, 7.46, 8.01
+5.84, 6.73, 7.62, 8.51, 9.4, 10.29, 11.18, 12.07, 12.96
+9.45, 10.89, 12.33, 13.77, 15.21, 16.65, 18.09, 19.53, 20.97

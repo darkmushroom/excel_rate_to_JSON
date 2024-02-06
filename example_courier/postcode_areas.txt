@@ -1,0 +1,15 @@
+# This file tells us what delivery areas the script should expect,
+# as well as what order our price tier matrix is organized into
+
+NARNIA
+OZ
+MIDDLE-EARTH
+NEVERLAND
+ASGARD
+WESTEROS
+RIVENDELL
+FLAT-EARTH
+WONDERLAND
+WAKANDA
+ATLANTIS
+PANDORA
