@@ -1,20 +1,25 @@
 # Excel to rate JSON
-simple parser that takes a pile of formatted text inputs and outputs a single JSON payload.
+Oblivious parser that takes a pile of formatted text inputs and outputs a single JSON payload.
 
 ## Setup
-Four text files are needed for each courier. See files in the `example_courier` folder for more information
+Each courier should be placed in a folder of the same name. All the files for USPS should be in `USPS/`, for example.
+You must supply four text files for each courier. See files in the `example_courier` folder for more information.
 
-- postcode_areas.txt - A single column of postcode areas this courier represents. This also represents the order of postcode areas in `price_tiers.txt`
-- mins_and_maxs.txt - A two-line, comma separated list of weights. The first line represents weight minimums, the second weight maximums
-- price_tiers.txt - a matrix of prices. The X direction represents price increasing with weight, the Y direction represents each shipping area
-- area_postcode_map.txt - a two-column, comma separated file relating postcode areas to the postcodes they represent
+- `postcode_areas.txt` - A single column of postcode areas this courier represents. This also represents the order of postcode areas in price_tiers.txt
+- `mins_and_maxs.txt` - A two-line, comma separated list of weights. The first line represents weight minimums, the second weight maximums
+- `price_tiers.txt` - A matrix of prices. The X direction represents price increasing with weight, the Y direction represents each shipping area
+- `area_postcode_map.txt` - A two-column, comma separated file relating postcode areas to the postcodes they represent
 
 ## Invocation
-After pulling the repo, you can execute the command with
-`python excel_to_rate_JSON.py "list, of, couriers"`
+After pulling the repo, you can execute the command with:
+```
+python excel_to_rate_JSON.py "list, of, couriers"
+```
 
-To build the example courier, use
-`python excel_to_rate_JSON.py example_courier`
+To build the example courier, use:
+```
+python excel_to_rate_JSON.py example_courier
+```
 
 Output is placed in `output/export.json`
 
