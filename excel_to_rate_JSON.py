@@ -1,18 +1,21 @@
 import os
 import argparse
 import json
+import reducer
 
 def main():
     parser = argparse.ArgumentParser(description ='Create price strategies from Excel copypasta')
     parser.add_argument('couriers', help='A comma-separated list of couriers to build.')
+    parser.add_argument('-s','--skip_product_restriction', action='store_true')
     parser_args = parser.parse_args()
     couriers = parser_args.couriers.split(',')
     couriers = [s.strip() for s in couriers]
 
     strategies = []
+    print(parser_args.skip_product_restriction)
 
     for courier in couriers:
-        strategies.append(cookJSON(courier))
+        strategies.append(cookJSON(courier, parser_args.skip_product_restriction))
 
     pricing_strategies = {"pricing_strategies": strategies}
 
@@ -22,7 +25,7 @@ def main():
     output_file.write(json.dumps(pricing_strategies))
     output_file.close()
 
-def cookJSON(this_carrier):
+def cookJSON(this_carrier, skip_product_restriction):
 
     postal_codes = parse_postcode_areas(this_carrier + "/postcode_areas.txt")
     weight_mins_and_maxs = parse_weight_mins_and_maxs(this_carrier + "/mins_and_maxs.txt")
@@ -50,14 +53,17 @@ def cookJSON(this_carrier):
             tiered_prices.append( {'start_value': weight_minimums[j], 'end_value': weight_maximums[j], 'price': shipping_amounts[i].split(',')[j].strip() } )
     
         if postal_codes[i] in postcode_map:
-            tiered_destination_prices.append( {'restriction_strategy': 'postal_code_starts_with', 'restriction_value': postcode_map[postal_codes[i]], 'tiered_prices': tiered_prices} )
+            reduced_postal_codes = reducer.reduce(postcode_map[postal_codes[i]])
+            tiered_destination_prices.append( {'restriction_strategy': 'postal_code_starts_with', 'restriction_value': reduced_postal_codes, 'tiered_prices': tiered_prices} )
         else:
             print("Warning! Postcode abbreviation: " + postal_codes[i] + " not in " + this_carrier + " postcode map")
 
         tiered_prices = []
 
-
-    price_strategy = {'price_strategy': 'weight-tiered_destination_prices', 'product_restrictions': [ { 'restriction_value': this_carrier, 'restriction_strategy': "product_tag_is" } ], "tiered_destination_prices": tiered_destination_prices }
+    if skip_product_restriction == False:
+        price_strategy = {'price_strategy': 'weight-tiered_destination_prices', 'product_restrictions': [ { 'restriction_value': this_carrier, 'restriction_strategy': "product_tag_is" } ], "tiered_destination_prices": tiered_destination_prices }
+    else:
+        price_strategy = {'price_strategy': 'weight-tiered_destination_prices', "tiered_destination_prices": tiered_destination_prices }
 
     print("...done!\n")
 
